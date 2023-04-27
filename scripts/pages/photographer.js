@@ -118,7 +118,8 @@ function filterMediaByCriteria(hrElt, photographerMedia, totalLikes, totalLikesE
     ulMediaElt.innerHTML = "";
     photographerMedia.forEach(media => {
         insertMediaDOM(media);
-        likePhotographerMedia(totalLikes, totalLikesElt);
+        likeOrDislikeMediaWithMouse(totalLikes, totalLikesElt);
+        likeOrDislikeMediaWithKeyboard(totalLikes, totalLikesElt);
         totalLikesElt.textContent = totalLikes;
     });
 }
@@ -209,14 +210,15 @@ function setMediaByTitleAsc(mediaByTitleAsc, totalLikes, totalLikesElt) {
  * @param {object} mediaByDateDesc 
  * @param {object} mediaByTitleAsc 
  */
-async function displayData(photographer, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc) {
-    let totalLikes = getPhotographerTotalLikes(photographerPopularMedia);
+async function displayData(photographer, photographerMedia, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc) {
+    let totalLikes = getPhotographerTotalLikes(photographerMedia);
     photographerPopularMedia.forEach(media => { insertMediaDOM(media) });
     photographerContactFactory(photographer);
     photographerPriceAndTotalLikesFactory(photographer, totalLikes);
     
     const totalLikesElt = document.querySelector(".total-likes b");
-    likePhotographerMedia(totalLikes, totalLikesElt);
+    likeOrDislikeMediaWithMouse(totalLikes, totalLikesElt);
+    likeOrDislikeMediaWithKeyboard(totalLikes, totalLikesElt);
     setPhotographerPopularMedia(photographerPopularMedia, totalLikes, totalLikesElt);
     setMediaByDateDesc(mediaByDateDesc, totalLikes, totalLikesElt);
     setMediaByTitleAsc(mediaByTitleAsc, totalLikes, totalLikesElt);
@@ -251,8 +253,9 @@ async function getPhotographerData() {
     const photographerPopularMedia = getPhotographerMediaByPopular(media);
     const mediaByDateDesc = getPhotographerMediaByDateDesc(media);
     const mediaByTitleAsc = getPhotographerMediaByTitleAsc(media);
+    const photographerMedia = getPhotographerMedia(media);
 
-    displayData(photographer, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc);
+    displayData(photographer, photographerMedia, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc);
     displayContactForm(photographer);
 }
 
@@ -261,7 +264,7 @@ async function getPhotographerData() {
  * @param {number} totalLikes 
  * @param {object} totalLikesElt 
  */
-function likePhotographerMedia(totalLikes, totalLikesElt) {
+function likeOrDislikeMediaWithMouse(totalLikes, totalLikesElt) {
     const loveElts = document.querySelectorAll(".btn-like-media");
     const likesNumberElts = document.querySelectorAll(".media b");
 
@@ -269,9 +272,8 @@ function likePhotographerMedia(totalLikes, totalLikesElt) {
         const loveElt = loveElts[i];
         const likesNumberElt = likesNumberElts[i];
         let likesNumber = likesNumberElt.textContent;
-
         let liked = true;
-        // like or dislike media onclick mouse
+
         loveElt.addEventListener("click", () => {
             if (liked === true) {
                 likesNumber++;
@@ -287,10 +289,26 @@ function likePhotographerMedia(totalLikes, totalLikesElt) {
                 liked = true;
             }
         });
+    }
+}
 
-        // like or dislike media on keydown enter button keyboard
-        loveElt.addEventListener("keydown", (event) => {
-            if (event.key.toLowerCase() === "enter") {
+/**
+ * 
+ * @param {number} totalLikes 
+ * @param {object} totalLikesElt 
+ */
+function likeOrDislikeMediaWithKeyboard(totalLikes, totalLikesElt) {
+    const loveElts = document.querySelectorAll(".btn-like-media");
+    const likesNumberElts = document.querySelectorAll(".media b");
+
+    for (let i = 0; i < loveElts.length; i++) {
+        const loveElt = loveElts[i];
+        const likesNumberElt = likesNumberElts[i];
+        let likesNumber = likesNumberElt.textContent;
+        let liked = true;
+
+        loveElt.addEventListener("keydown", (e) => {
+            if (e.key.toLowerCase() === "enter") {
                 if (liked === true) {
                     likesNumber++;
                     totalLikes++;
