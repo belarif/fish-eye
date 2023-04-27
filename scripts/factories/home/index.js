@@ -91,7 +91,7 @@ function setPhotographerTagline(tagline, taglineElt, figCaptionElt) {
  * @param {object} figCaptionElt 
  */
 function setPhotographerPrice(price, priceElt, figCaptionElt) {
-    priceElt.textContent = `${price}/jour`;
+    priceElt.textContent = `${price}€/jour`;
     figCaptionElt.appendChild(priceElt);
 }
 

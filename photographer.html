@@ -17,10 +17,7 @@
     </header>
 
     <main id="main" aria-hidden="false" role="none">
-      <header 
-      class="photograph-header" 
-      aria-label="cette région contient les informations et contacts du photographe"
-      >
+      <header class="photograph-header" aria-label="cette région contient les informations et contacts du photographe">
         <ul>
         </ul>
         <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
@@ -32,7 +29,7 @@
           <label for="filter">Trier par</label>
           <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check1"/>
-            <label for="check1" class="dropdown-label" tabindex="0"></label>
+            <label for="check1" class="dropdown-label" tabindex="0">Popularité</label>
             <ul class="dropdown-ul" role="listbox">
               <li aria-hidden="true"><hr></li>
               <li aria-label="trier les media par populaires" class="popularMedia" role="option" tabindex="0">Popularité</li>
@@ -53,23 +50,17 @@
       </section>
 
       <!-- price and total likes photographer -->
-      <div 
-      class="price-and-likes" 
-      role="region" 
-      aria-label="cette région nous informe du nombre total des likes et le prix par jour d'un photographer">
+      <div class="price-and-likes" role="region" aria-label="nombre total des likes et le prix par jour d'un photographer">
         <div class="total-likes"></div>
       </div>
     </main>
 
     <!-- form contact modal -->
-    <div id="contact-modal" 
-    role="dialog" 
-    aria-hidden="true" 
-    aria-describedby="modalTitle">
+    <div id="contact-modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
 			<div class="modal">
 				<header role="none">
           <h2 id="modalTitle">Contactez-moi</h2>
-          <button class="close-contact-modal" role="none">
+          <button class="close-contact-modal">
             <img src="assets/icons/whiteClose.svg" alt="fermer le formulaire de contact" onclick="closeModal()"/>
           </button>
         </header>
