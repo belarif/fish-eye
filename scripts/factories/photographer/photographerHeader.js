@@ -62,7 +62,6 @@ function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
  * @param {object} buttonHeaderElt 
  */
 function addContactButton(liContactElt, ulHeaderElt, buttonHeaderElt) {
-    // buttonHeaderElt.setAttribute("aria-label","contactez le photographe");
     ulHeaderElt.setAttribute("role","none");
     ulHeaderElt.appendChild(liContactElt).appendChild(buttonHeaderElt);
 }

@@ -13,14 +13,14 @@ body > header {
     height: 90px;
 }
 
-.logo {
-    height: 40px;
-}
-
 img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
+}
+
+.logo {
+    height: 40px;
 }
 
 

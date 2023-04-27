@@ -7,15 +7,27 @@ const slidesToScroll = 1;
 const slidesVisibles = 1;
 let currentItem = 0;
     
-function openLightboxWithMouse() {
+function openLightbox() {
 	modalLightboxElt.style.display = "block";
     const closeLightboxElt = document.querySelector(".close-lightbox-modal");
     closeLightboxElt.focus();
     mainElt.setAttribute("aria-hidden","true");
     modalLightboxElt.setAttribute("aria-hidden","false");
+}
 
+function openLightboxWithMouse() {
+    openLightbox();
     const idClickedMedia = document.querySelector(".media button:hover > span").textContent;
     displayDataLightbox(idClickedMedia);
+}
+
+// close modal on keydown "enter" keyborad button
+function openLightboxWithKeyboard(event) {
+    if (event.key.toLowerCase() === "enter") {
+        openLightbox();
+        const idClickedMedia = document.querySelector(".media button > span").textContent;
+        displayDataLightbox(idClickedMedia);
+    }
 }
 
 function closeLightbox() {
