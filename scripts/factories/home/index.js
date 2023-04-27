@@ -15,25 +15,16 @@ function addLinkElt(id, name, aElt, articleElt) {
 
 /**
  * 
- * @param {object} figureElt 
- * @param {object} aElt 
- */
-function addFigureElt(figureElt, aElt) {
-    aElt.appendChild(figureElt);
-}
-
-/**
- * 
  * @param {string} name 
  * @param {string} picture 
  * @param {object} imgElt 
  * @param {object} figureElt 
  */
-function setPhotographerImg(name, picture, imgElt, figureElt) {
+function setPhotographerImg(name, picture, imgElt, figureElt, aElt) {
     imgElt.setAttribute("src", picture);
     imgElt.setAttribute("alt", name);
     imgElt.setAttribute("role","none");
-    figureElt.appendChild(imgElt);
+    aElt.appendChild(figureElt).appendChild(imgElt);
 }
 
 /**
@@ -116,8 +107,7 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         addLinkElt(id, name, aElt, articleElt);
-        addFigureElt(figureElt, aElt);
-        setPhotographerImg(name, picture, imgElt, figureElt);
+        setPhotographerImg(name, picture, imgElt, figureElt, aElt);
         setPhotographerName(name, nameElt, figureElt);
         addFigCaptionElt(figureElt, figCaptionElt);
         setPhotographerCountry(city, country, countryElt, figCaptionElt);
