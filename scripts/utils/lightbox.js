@@ -15,9 +15,9 @@ function openLightbox() {
     modalLightboxElt.setAttribute("aria-hidden","false");
 }
 
-function openLightboxWithMouse() {
+function openLightboxWithMouse(event) {
     openLightbox();
-    const idClickedMedia = document.querySelector(".media button:hover > span").textContent;
+    const idClickedMedia = event.target.nextElementSibling.textContent;
     displayDataLightbox(idClickedMedia);
 }
 
@@ -25,7 +25,7 @@ function openLightboxWithMouse() {
 function openLightboxWithKeyboard(event) {
     if (event.key.toLowerCase() === "enter") {
         openLightbox();
-        const idClickedMedia = document.querySelector(".media button > span").textContent;
+        const idClickedMedia = event.target.lastChild.textContent;
         displayDataLightbox(idClickedMedia);
     }
 }
