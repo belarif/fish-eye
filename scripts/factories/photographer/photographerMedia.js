@@ -10,7 +10,7 @@ function addFigureMedia(figureMediaElt, liMediaElt) {
 }
 
 function addButtonMedia(buttonMediaElt, figureMediaElt) {
-    buttonMediaElt.setAttribute("onclick", "openLightboxWithMouse()");
+    buttonMediaElt.setAttribute("onclick", "openLightboxWithMouse(event)");
     buttonMediaElt.setAttribute("onkeydown", "openLightboxWithKeyboard(event)");
     buttonMediaElt.setAttribute("class","btn-media");
     buttonMediaElt.setAttribute("aria-label","cliquez le bouton entrer pour ouvrir le média dans la modale");
