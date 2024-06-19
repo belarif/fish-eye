@@ -56,3 +56,39 @@ p {
 figcaption p:nth-child(3) {
   color: #525252;
 }
+
+.modal-tools {
+  position: absolute;
+  top: 6%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.close-modal-tools {
+  text-align: right;
+}
+
+.close-modal-tools button {
+  padding: 4px 10px;
+  width: auto;
+}
+
+.tech-infos {
+  text-align: center;
+}
+
+.tech-infos li {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #901c1c;
+  display: block;
+}
+
+.modal-tools-content {
+  padding: 20px;
+  width: 600px;
+  height: auto;
+  background-color: beige;
+}
